@@ -4,6 +4,7 @@ import LoginPage from './Components/Login/loginPage'
 import Dashboard from './Components/Dashboard/Dashboard'
 import Consignment from './Components/Dashboard/Consignment'
 import TruckTracking from './Components/Dashboard/TruckTracking'
+import TruckDetails from './Components/Dashboard/TruckDetails'
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Route path='/login' element={<LoginPage/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
         <Route path='/dashboard/consignment' element={<Consignment/>}/>
-        <Route path='/dashboard/truck' element={<TruckTracking/>}/>
+        <Route path='/dashboard/trucks' element={<TruckTracking/>}/>
+        <Route path='/dashboard/truckDetails' element={<TruckDetails/>}/>
       </Routes>
    </BrowserRouter>
   )
