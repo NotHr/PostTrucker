@@ -7,7 +7,7 @@ body {
 
 .dashboard-container {
   padding: 20px;
-  max-width: 1200px;
+  width: 100%;
   margin: 0 auto;
   border-radius: 8px;
 }
@@ -19,21 +19,12 @@ h1 {
   color: #333;
 }
 
+/* Layout grid to be horizontal */
 .dashboard-grid {
   display: flex;
-  justify-content: space-between;
+  flex-direction: row; /* Change to row for horizontal alignment */
   gap: 20px;
   height: calc(100vh - 100px); /* Full height minus some padding */
-}
-
-.dashboard-container {
-  padding: 20px;
-}
-
-.dashboard-grid {
-  display: flex;
-  flex-direction: row;
-  gap: 20px;
 }
 
 .section {
@@ -42,6 +33,7 @@ h1 {
   flex-direction: column;
 }
 
+/* Trucks Section (scrollable) */
 .trucks-section {
   overflow-y: auto; /* Enables vertical scrolling */
   max-height: 100vh; /* Adjust based on your layout needs */
@@ -77,76 +69,23 @@ h1 {
   max-width: 600px; /* Adjust width if needed */
 }
 
+/* Truck Management Button */
+button {
+  background-color: black;
+  color: white;
+  font-size: 1.1rem;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 15px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .dashboard-card h3,
 .dashboard-card p {
   margin: 0;
-}
-
-.dashboard-card button {
-  align-self: flex-start;
-}
-
-
-.section {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.dashboard-card {
-  background-color: #fff;
-  padding: 40px;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: box-shadow 0.3s ease;
-  margin-bottom: 20px;
-  flex-grow: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.dashboard-card h3 {
-  font-size: 1.6rem;
-  margin: 0 0 10px;
-}
-
-.dashboard-card p {
-  font-size: 1.2rem;
-  margin: 10px 0;
-  color: #555;
-}
-
-.on-time {
-  color: green;
-}
-
-.delayed {
-  color: red;
-}
-
-.truck-issue {
-  border: 10px solid red;
-  background-color: #ffe5e5;
-}
-button{
-    background-color: black;
-    color: white;
-    font-size: 1.1rem;
-    padding: 12px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.chart-container {
-  margin-top: 20px;
-  width: 100%;
-  max-width: 400px;
 }
 
 .stats-section .dashboard-card {
