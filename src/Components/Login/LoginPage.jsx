@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './LoginPage.css'
+import './LoginPage.css';
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -12,7 +12,6 @@ const LoginPage = () => {
       setError("Please fill in all fields");
     } else {
       setError("");
-      // Handle login logic here
       console.log("Email:", email);
       console.log("Password:", password);
       alert("Login successful");
@@ -48,6 +47,8 @@ const LoginPage = () => {
         <button type="submit" className="login-button">
           Login
         </button>
+
+        <a href="#" className="forgot-password">Forgot your password?</a>
       </form>
     </div>
   );
