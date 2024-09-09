@@ -6,7 +6,7 @@ body {
   align-items: center;
   height: 100vh;
   font-family: 'Roboto', sans-serif;
-  background: linear-gradient(135deg, #ff7e5f, #feb47b); /* Smooth gradient background */
+  background: linear-gradient(135deg, #ff7e5f, #fe7f7b); /* Smooth gradient background */
 }
 
 .login-container {

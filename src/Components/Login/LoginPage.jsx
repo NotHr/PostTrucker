@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import * as axios from "axios"; 
 import './LoginPage.css';
 
 const LoginPage = () => {
@@ -6,16 +7,21 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-  const handleLogin = (e) => {
+    const handleLogin = (e) => {
     e.preventDefault();
-    if (!email || !password) {
-      setError("Please fill in all fields");
-    } else {
-      setError("");
-      console.log("Email:", email);
-      console.log("Password:", password);
-      alert("Login successful");
+    if (!email) {
+      setError("Please enter your email id");
+      return
     }
+    else if(!password){
+       setError("Please fill your password");
+       return
+    }
+    axios.default.post('/skill',{email : email, password: password}).then(res => {
+        if(res.status === 404){
+            setError("Skill Issue")
+        }
+    }).catch(err => setError("Another sill Isssue"))
   };
 
   return (
