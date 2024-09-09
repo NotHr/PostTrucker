@@ -1,10 +1,14 @@
 import { useState } from "react"
 import "./Consign.css" 
+import { useNavigate } from "react-router-dom"
 function Consignment(){
+    const navigate = useNavigate()
     const [weight, setWeight] = useState(0) 
     const [size, setSize] = useState("") 
 
-    const handleConsignment = (e) => {}
+    const handleConsignment = (e) => {
+        navigate('/dashboard')
+    }
     return(
        <>
            <div className="login-container">
@@ -29,17 +33,7 @@ function Consignment(){
                 /> 
                 </div>
                
-                <div className="form-group">
-                <label>Enter the priority</label>
-                <select>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-
-                </select>
-                </div>
+               
                
                 <div className="form-group">
                 <label>Enter From location</label>

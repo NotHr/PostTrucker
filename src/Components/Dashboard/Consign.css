@@ -1,7 +1,7 @@
 /* Global styling */
 body {
-    font-family: 'Roboto', sans-serif;
-    background-color: #f5f5f5;
+    font-family: 'Poppins', sans-serif;
+    background-color: #f0f4f8;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,97 +11,130 @@ body {
 }
 
 h1 {
-    font-size: 2.2rem;
-    color: #202124;
+    font-size: 2.4rem;
+    color: #333;
     text-align: center;
-    margin-bottom: 24px;
+    margin-bottom: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
+/* Login Container */
 .login-container {
     background-color: #fff;
-    padding: 40px;
+    padding: 30px 40px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     width: 100%;
-    max-width: 500px;
+    max-width: 600px; /* Increased width */
+    box-sizing: border-box;
+    transition: box-shadow 0.3s ease;
 }
 
+.login-container:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Form */
 form {
     display: flex;
     flex-direction: column;
 }
 
 .form-group {
-    margin-bottom: 20px;
+    margin-bottom: 15px; /* Reduced spacing between input fields */
 }
 
 label {
-    font-size: 1rem;
-    color: #5f6368;
+    font-size: 1.1rem;
+    color: #555;
     margin-bottom: 5px;
     display: inline-block;
 }
 
+/* Input Styling */
 input[type="number"],
 input[type="text"],
 select {
-    width: calc(100% - 20px);
-    padding: 12px 10px;
+    width: 100%;
+    padding: 12px; /* Reduced padding */
     font-size: 1rem;
-    border: 1px solid #dadce0;
-    border-radius: 4px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 8px;
+    border: 1px solid #d1d9e6;
+    background-color: #f9fbfd;
     box-sizing: border-box;
+    color: #333;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 input[type="number"]:focus,
 input[type="text"]:focus,
 select:focus {
-    border-color: #4285f4;
-    box-shadow: 0 1px 2px rgba(66, 133, 244, 0.3);
+    border-color: #6a9ff1;
+    box-shadow: 0 0 4px rgba(106, 159, 241, 0.3);
     outline: none;
 }
 
+/* Select dropdown styling */
+select {
+    appearance: none;
+    background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMCA1Ij48cGF0aCBkPSJNNSAwbC01IDVoMTBsLTUtNXoiIGZpbGw9IiNjY2NjY2MiLz48L3N2Zz4=') no-repeat right 12px center;
+    background-size: 10px 10px;
+    padding-right: 40px;
+}
+
+/* Placeholder styling */
+input::placeholder {
+    color: #a9b3c1;
+}
+
+/* Button Styling */
 .login-button {
-    background-color: #1a73e8;
+    background-color: #5a67d8;
     color: white;
     font-size: 1.1rem;
-    padding: 12px;
+    padding: 12px; /* Reduced padding */
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
-    margin-top: 15px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px; /* Reduced margin above button */
+    box-shadow: 0 2px 5px rgba(90, 103, 216, 0.3);
 }
 
 .login-button:hover {
-    background-color: #135cbf;
-}
-
-.login-button:focus {
-    outline: none;
+    background-color: #4752c4;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(90, 103, 216, 0.3);
 }
 
 .login-button:active {
-    background-color: #0d47a1;
+    background-color: #3c47b3;
+    transform: translateY(1px);
 }
 
-select {
-    appearance: none;
-    background: #fff url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMCA1Ij48cGF0aCBkPSJNNSAwbC01IDVoMTBsLTUtNXoiIGZpbGw9IiMwMDAiLz48L3N2Zz4=') no-repeat right 10px center;
-    background-size: 12px 12px;
-}
-
-/* To give proper alignment to label/input pair */
+/* Align label/input pair */
 .form-group {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
 
-@media screen and (max-width: 600px) {
+/* Media Queries */
+@media screen and (max-width: 768px) {
     .login-container {
         width: 90%;
+        padding: 25px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    h1 {
+        font-size: 2rem;
+    }
+
+    .login-button {
+        padding: 10px;
+        font-size: 1rem;
     }
 }

@@ -1,68 +1,99 @@
 import React, { useState } from "react";
-import * as axios from "axios"; 
-import './LoginPage.css';
+import "./LoginPage.css";
 import { useNavigate } from "react-router-dom";
-import Dashboard from "../Dashboard/Dashboard";
 
 const LoginPage = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
-    const handleLogin = (e) => {
-      e.preventDefault();
-      if (!email) {
-        setError("Please enter your email id");
-        return
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    if (!email) {
+      setError("Please enter your email id");
+      return;
+    }
+    if (!password) {
+      setError("Please fill your password");
+      return;
+    }
+
+    try {
+      // Make API request
+      const response = await axios.post('http://172.26.49.49:8000/api/login/', {
+        username: email,
+        password: password
+      });
+
+      if (response.status === 200) {
+        // Assuming response contains tokens and user info
+        const { access, refresh, user } = response.data;
+
+        // Store tokens and user info in localStorage
+        sessionStorage.setItem('accessToken', access);
+        sessionStorage.setItem('refreshToken', refresh);
+        sessionStorage.setItem('user', JSON.stringify(user));
+
+        // Redirect to the dashboard
+        navigate("/dashboard");
+      } else {
+        setError("Invalid credentials");
       }
-      else if(!password){
-        setError("Please fill your password");
-        return
-      }else{
-        return navigate("/dashboard")
-      }
-      
-    // axios.default.post('/skill',{email : email, password: password}).then(res => {
-    //     if(res.status === 404){
-    //         setError("Skill Issue")
-    //     }
-    // }).catch(err => setError("Another sill Isssue"))
+    } catch (err) {
+      console.error(err);
+      setError("An error occurred during login. Please try again.");
+    }
   };
-
   return (
-    <div className="login-container">
-      <h2>Login</h2>
-      <form onSubmit={handleLogin}>
-        <div className="form-group">
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="Enter your email"
-          />
+    <>
+      <div className="container">
+        {/* Left half (Login form) */}
+        <div className="left-half">
+        <div class="header-text">
+        Post<span class="trucker">Trucker</span>
+      </div>
+          <div className="login-container">
+            <h2>Login</h2>
+            <form onSubmit={handleLogin}>
+              <div className="form-group">
+                <label>Email:</label>
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                />
+              </div>
+
+              <div className="form-group">
+                <label>Password:</label>
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  placeholder="Enter your password"
+                />
+              </div>
+
+              {error && <p className="error-message">{error}</p>}
+
+              <button type="submit" className="login-button">
+                Login
+              </button>
+
+              <a href="#" className="forgot-password">
+                Forgot your password?
+              </a>
+            </form>
+          </div>
         </div>
 
-        <div className="form-group">
-          <label>Password:</label>
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Enter your password"
-          />
-        </div>
-
-        {error && <p className="error-message">{error}</p>}
-
-        <button type="submit" className="login-button">
-          Login
-        </button>
-
-        <a href="#" className="forgot-password">Forgot your password?</a>
-      </form>
-    </div>
+        {/* Right half (Image) */}
+        <div className="right-half"></div>
+      </div>
+    </>
   );
 };
 
