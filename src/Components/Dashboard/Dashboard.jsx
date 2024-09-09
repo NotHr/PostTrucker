@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Bar, Pie } from 'react-chartjs-2';
 import 'chart.js/auto';
 import './Dashboard.css';
+import { useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+  const navigate = useNavigate()
   const [trucks, setTrucks] = useState([]);
   const [outgoingTrucks, setOutgoingTrucks] = useState([]);
   const [filteredTrucks, setFilteredTrucks] = useState([]);
@@ -100,7 +102,7 @@ const Dashboard = () => {
                   Status: {truck.status}
                 </p>
                 {truck.sos && <p className="sos-alert">SOS Alert!</p>}
-                <button>Manage</button>
+                <button onClick={() => {navigate('/dashboard/truckdetails')}}>Manage</button>
               </div>
             ))}
           </div>
@@ -121,7 +123,7 @@ const Dashboard = () => {
                   Status: {truck.status}
                 </p>
                 {truck.sos && <p className="sos-alert">SOS Alert!</p>}
-                <button>Manage</button>
+                <button onClick={() => {navigate('/dashboard/truckdetails')}}>Manage</button>
               </div>
             ))}
           </div>
@@ -131,8 +133,6 @@ const Dashboard = () => {
         <div className="section driver-form-section">
           <h2>Get Driver</h2>
           <div className="dashboard-card">
-            <label>Size: </label>
-            <input type="text" value={driverForm.size} onChange={(e) => setDriverForm({ ...driverForm, size: e.target.value })} />
             <label>Weight: </label>
             <input type="number" value={driverForm.weight} onChange={(e) => setDriverForm({ ...driverForm, weight: e.target.value })} />
             <label>Destination: </label>
@@ -141,7 +141,7 @@ const Dashboard = () => {
           </div>
 
           <div className="filtered-trucks-section">
-            <h3>Available Trucks</h3>
+            <h3>Output</h3>
             {filteredTrucks.map(truck => (
               <div key={truck.id} className="dashboard-card">
                 <h3>Truck Number: {truck.number}</h3>
