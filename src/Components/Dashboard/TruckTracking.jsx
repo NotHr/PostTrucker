@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { MapContainer, TileLayer, Marker, Tooltip, Polyline } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import truckIMG from './box-truck.png'; // Correct image path
+import pinIMG from './placeholder.png'
 import L from 'leaflet';
 import 'leaflet-defaulticon-compatibility';
 import 'leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css';
@@ -12,6 +13,12 @@ const truckIcon = new L.Icon({
   iconSize: [40, 40], // Adjust the size of the truck icon
   iconAnchor: [20, 40], // Anchor the icon at the bottom center for proper placement
 });
+
+const placeholder = new L.Icon({
+  iconUrl: pinIMG,
+  iconSize: [40,40],
+  iconAnchor: [20,20]
+})
 
 // Haversine Formula for distance calculation between two points
 const calculateDistance = (lat1, lon1, lat2, lon2) => {
@@ -82,12 +89,12 @@ function TruckTracking() {
 
         {/* Markers and paths for trucks */}
         {filteredTrucks.map((truck) => {
-          const distance = calculateDistance(truck.startLat, truck.startLng, truck.endLat, truck.endLng);
+          const distance = calculateDistance(truck.lat, truck.lng, truck.endLat, truck.endLng);
           return (
             <React.Fragment key={truck.id}>
-              {/* Marker for the start location */}
+              {/* Marker for the current location */}
               <Marker
-                position={[truck.startLat, truck.startLng]}
+                position={[truck.lat, truck.lng]}
                 icon={truckIcon} // Use the truck icon
               >
                 <Tooltip>
@@ -105,7 +112,7 @@ function TruckTracking() {
               {/* Marker for the end location */}
               <Marker
                 position={[truck.endLat, truck.endLng]}
-                icon={truckIcon} // Use the truck icon
+                icon={placeholder} // Use the truck icon
               >
                 <Tooltip>
                   <div>
@@ -119,11 +126,11 @@ function TruckTracking() {
                 </Tooltip>
               </Marker>
 
-              {/* Polyline to show the path between the start and end locations */}
+              {/* Polyline to show the path between the current location and the destination */}
               <Polyline
                 positions={[
-                  [truck.startLat, truck.startLng], // Starting point
-                  [truck.endLat, truck.endLng],     // Destination point
+                  [truck.lat, truck.lng], // Current location
+                  [truck.endLat, truck.endLng], // Destination
                 ]}
                 color="blue"
                 weight={4}
