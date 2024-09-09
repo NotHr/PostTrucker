@@ -1,0 +1,107 @@
+/* Global styling */
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 2.2rem;
+    color: #202124;
+    text-align: center;
+    margin-bottom: 24px;
+}
+
+.login-container {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-size: 1rem;
+    color: #5f6368;
+    margin-bottom: 5px;
+    display: inline-block;
+}
+
+input[type="number"],
+input[type="text"],
+select {
+    width: calc(100% - 20px);
+    padding: 12px 10px;
+    font-size: 1rem;
+    border: 1px solid #dadce0;
+    border-radius: 4px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    box-sizing: border-box;
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus,
+select:focus {
+    border-color: #4285f4;
+    box-shadow: 0 1px 2px rgba(66, 133, 244, 0.3);
+    outline: none;
+}
+
+.login-button {
+    background-color: #1a73e8;
+    color: white;
+    font-size: 1.1rem;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.login-button:hover {
+    background-color: #135cbf;
+}
+
+.login-button:focus {
+    outline: none;
+}
+
+.login-button:active {
+    background-color: #0d47a1;
+}
+
+select {
+    appearance: none;
+    background: #fff url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMCA1Ij48cGF0aCBkPSJNNSAwbC01IDVoMTBsLTUtNXoiIGZpbGw9IiMwMDAiLz48L3N2Zz4=') no-repeat right 10px center;
+    background-size: 12px 12px;
+}
+
+/* To give proper alignment to label/input pair */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+@media screen and (max-width: 600px) {
+    .login-container {
+        width: 90%;
+    }
+}
