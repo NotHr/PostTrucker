@@ -1,0 +1,23 @@
+.dashboard {
+    display: flex;
+  }
+  
+  .main-content {
+    width: 100%;
+    padding: 20px;
+  }
+  
+  .content-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .truck-section {
+    text-align: center;
+  }
+  
+  .map-section {
+    width: 400px;
+  }
+  
