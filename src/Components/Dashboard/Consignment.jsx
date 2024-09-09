@@ -12,7 +12,7 @@ function Consignment(){
     return(
        <>
            <div className="login-container">
-                <h1>Consignment Register</h1>
+                <h1>Register Driver</h1>
                 <form onSubmit={handleConsignment}>
                 <div className="form-group">
                     <label>Consignment Weight</label>
