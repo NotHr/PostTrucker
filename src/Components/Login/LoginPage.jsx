@@ -1,27 +1,33 @@
 import React, { useState } from "react";
 import * as axios from "axios"; 
 import './LoginPage.css';
+import { useNavigate } from "react-router-dom";
+import Dashboard from "../Dashboard/Dashboard";
 
 const LoginPage = () => {
+  const navigate = useNavigate()
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
 
     const handleLogin = (e) => {
-    e.preventDefault();
-    if (!email) {
-      setError("Please enter your email id");
-      return
-    }
-    else if(!password){
-       setError("Please fill your password");
-       return
-    }
-    axios.default.post('/skill',{email : email, password: password}).then(res => {
-        if(res.status === 404){
-            setError("Skill Issue")
-        }
-    }).catch(err => setError("Another sill Isssue"))
+      e.preventDefault();
+      if (!email) {
+        setError("Please enter your email id");
+        return
+      }
+      else if(!password){
+        setError("Please fill your password");
+        return
+      }else{
+        return navigate("/dashboard")
+      }
+      
+    // axios.default.post('/skill',{email : email, password: password}).then(res => {
+    //     if(res.status === 404){
+    //         setError("Skill Issue")
+    //     }
+    // }).catch(err => setError("Another sill Isssue"))
   };
 
   return (
