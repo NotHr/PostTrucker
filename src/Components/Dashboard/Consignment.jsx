@@ -1,5 +1,5 @@
 import { useState } from "react"
-
+import "./Consign.css" 
 function Consignment(){
     const [weight, setWeight] = useState(0) 
     const [size, setSize] = useState("") 
