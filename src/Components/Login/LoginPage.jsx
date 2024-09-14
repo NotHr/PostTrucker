@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./LoginPage.css";
+import * as axios from 'axios'
 import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
@@ -22,7 +23,7 @@ const LoginPage = () => {
 
     try {
       // Make API request
-      const response = await axios.post('http://172.26.49.49:8000/api/login/', {
+      const response = await axios.default.post('http://192.168.139.111:8000/api/login/', {
         username: email,
         password: password
       });
@@ -32,9 +33,9 @@ const LoginPage = () => {
         const { access, refresh, user } = response.data;
 
         // Store tokens and user info in localStorage
-        sessionStorage.setItem('accessToken', access);
-        sessionStorage.setItem('refreshToken', refresh);
-        sessionStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('accessToken', access);
+        localStorage.setItem('refreshToken', refresh);
+        localStorage.setItem('user', JSON.stringify(user));
 
         // Redirect to the dashboard
         navigate("/dashboard");
@@ -51,8 +52,8 @@ const LoginPage = () => {
       <div className="container">
         {/* Left half (Login form) */}
         <div className="left-half">
-        <div class="header-text">
-        Post<span class="trucker">Trucker</span>
+        <div className="header-text">
+        Post<span className="trucker">Trucker</span>
       </div>
           <div className="login-container">
             <h2>Login</h2>
@@ -60,7 +61,7 @@ const LoginPage = () => {
               <div className="form-group">
                 <label>Email:</label>
                 <input
-                  type="email"
+                  type="text"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your email"
